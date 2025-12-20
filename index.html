@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:title" content="Rifat Mollah - Full Stack Developer & Graphic Designer">
+    <meta property="og:description" content="Portfolio of Rifat Mollah, Full Stack Developer and Professional Graphic Designer.">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Rifat Mollah - Full Stack Developer & Graphic Designer">
+    <meta name="twitter:description" content="Portfolio of Rifat Mollah, Full Stack Developer and Professional Graphic Designer.">
+
+    <title>Rifat Mollah - Full Stack Developer & Graphic Designer</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<!-- Animated Background Canvas -->
+<canvas id="backgroundCanvas"></canvas>
+
+<!-- Gradient Orbs -->
+<div class="gradient-orb orb-1"></div>
+<div class="gradient-orb orb-2"></div>
+<div class="gradient-orb orb-3"></div>
+
+<!-- Mouse Follower -->
+<div class="cursor-follower" id="cursorFollower"></div>
+
+<!-- Sidebar Navigation (Desktop) -->
+<aside class="sidebar">
+    <div>
+        <h2>RM</h2>
+    </div>
+
+    <nav>
+        <ul>
+            <li><button class="nav-btn active" data-section="about">About</button></li>
+            <li><button class="nav-btn" data-section="portfolio">Portfolio</button></li>
+            <li><button class="nav-btn" data-section="services">Services</button></li>
+            <li><button class="nav-btn" data-section="testimonials">Testimonials</button></li>
+            <li><button class="nav-btn" data-section="resume">Resume</button></li>
+            <li><button class="nav-btn" data-section="blog">Blog</button></li>
+            <li><button class="nav-btn" data-section="contact">Contact</button></li>
+        </ul>
+    </nav>
+
+    <div class="copyright">&copy; 2025 RIFAT MOLLAH</div>
+</aside>
+
+<!-- Mobile Header -->
+<div class="mobile-header" id="mobileHeader">
+    <h2>RM</h2>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+</div>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobileMenu">
+    <nav>
+        <button class="mobile-nav-btn" data-section="about">About</button>
+        <button class="mobile-nav-btn" data-section="portfolio">Portfolio</button>
+        <button class="mobile-nav-btn" data-section="services">Services</button>
+        <button class="mobile-nav-btn" data-section="testimonials">Testimonials</button>
+        <button class="mobile-nav-btn" data-section="resume">Resume</button>
+        <button class="mobile-nav-btn" data-section="blog">Blog</button>
+        <button class="mobile-nav-btn" data-section="contact">Contact</button>
+    </nav>
+</div>
+
+<!-- Main Content -->
+<main>
+
+    <!-- Hero Section -->
+    <section id="about">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <span class="section-label">About Me</span>
+                    <h1>Rifat <span class="highlight">Mollah</span></h1>
+                    <p class="hero-subtitle">Full Stack Developer & Professional Graphic Designer</p>
+                    <p class="hero-description">
+                        I create clean, minimal, and functional interfaces for web base applications.
+                        Passionate about transforming ideas into stunning digital experiences through code and design.
+                    </p>
+
+                    <div class="contact-grid">
+                        <div class="contact-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            <span>islamrifat925@gmail.com</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>
+                            <span>+880 1869-256761</span>
+                        </div>
+                        <div class="contact-item">
+                            <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                            <span>Dhaka, Bangladesh</span>
+                        </div>
+                    </div>
+
+                    <div class="stats">
+                        <div class="stat">
+                            <h3>5+</h3>
+                            <p>Years Experience</p>
+                        </div>
+                        <div class="stat">
+                            <h3>50+</h3>
+                            <p>Projects</p>
+                        </div>
+                        <div class="stat">
+                            <h3>30+</h3>
+                            <p>Happy Clients</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-image">
+                    <img src="assets/img/rifat.jpeg" alt="Rifat Mollah">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section id="portfolio" class="alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Portfolio</span>
+                <h2 class="section-title">My Latest Works</h2>
+
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="web">Web Development</button>
+                    <button class="filter-btn" data-filter="design">Graphic Design</button>
+                </div>
+            </div>
+
+            <div class="portfolio-grid" id="portfolioGrid">
+                <div class="portfolio-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=600&fit=crop" alt="Project">
+                    <div class="portfolio-overlay">
+                        <h3>E-Commerce Platform</h3>
+                        <span>Web Development</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&h=600&fit=crop" alt="Project">
+                    <div class="portfolio-overlay">
+                        <h3>Brand Identity Design</h3>
+                        <span>Graphic Design</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?w=800&h=600&fit=crop" alt="Project">
+                    <div class="portfolio-overlay">
+                        <h3>Corporate Website</h3>
+                        <span>Web Development</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="design">
+                    <img src="https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&h=600&fit=crop" alt="Project">
+                    <div class="portfolio-overlay">
+                        <h3>Social Media Campaign</h3>
+                        <span>Graphic Design</span>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-category="web">
+                    <img src="https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&h=600&fit=crop" alt="Project">
+                    <div class="portfolio-overlay">
+                        <h3>Portfolio Dashboard</h3>
+                        <span>Web Development</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Services</span>
+                <h2 class="section-title">What I Do</h2>
+            </div>
+
+            <div class="services-list">
+                <div class="service-item">
+                    <div class="service-number">01</div>
+                    <div class="service-content">
+                        <h3>
+                            <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"></path></svg>
+                            Full Stack Web Development
+                        </h3>
+                        <p>Building responsive and scalable web applications using modern technologies like vue js, python, Laravel, and more. From front-end to back-end, I deliver complete solutions.</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-number">02</div>
+                    <div class="service-content">
+                        <h3>
+                            <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"></path></svg>
+                            Professional Graphic Design
+                        </h3>
+                        <p>Creating stunning visual identities, logos, branding materials, social media graphics, and print designs that capture your brand's essence and engage your audience.</p>
+                    </div>
+                </div>
+
+                <div class="service-item">
+                    <div class="service-number">03</div>
+                    <div class="service-content">
+                        <h3>
+                            <svg class="service-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"></path></svg>
+                            UI/UX Design & Strategy
+                        </h3>
+                        <p>Crafting intuitive user interfaces and experiences through research, wireframing, prototyping, and testing. Ensuring your digital products are both beautiful and functional.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">What Clients Say</h2>
+            </div>
+
+            <div class="testimonials-carousel">
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Rifat delivered an exceptional e-commerce platform that exceeded our expectations. His attention to detail and technical expertise made our project a huge success. Highly recommended!"</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Sarah" alt="Sarah Johnson">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Sarah Johnson</div>
+                            <div class="testimonial-role">CEO at TechStart</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Working with Rifat was a pleasure. His graphic design skills transformed our brand identity completely. Professional, creative, and always on time with deliverables."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Michael" alt="Michael Chen">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Michael Chen</div>
+                            <div class="testimonial-role">Marketing Director</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="testimonial-card">
+                    <div>
+                        <div class="stars">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                        </div>
+                        <p class="testimonial-text">"Rifat's mobile app development skills are top-notch. He created a beautiful, user-friendly app that our customers love. Communication was excellent throughout the project."</p>
+                    </div>
+                    <div class="testimonial-author">
+                        <div class="testimonial-avatar">
+                            <img src="https://api.dicebear.com/7.x/avataaars/svg?seed=Emma" alt="Emma Wilson">
+                        </div>
+                        <div>
+                            <div class="testimonial-name">Emma Wilson</div>
+                            <div class="testimonial-role">Founder at AppVenture</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Resume Section -->
+    <section id="resume">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Resume</span>
+                <h2 class="section-title">Education & Experience</h2>
+            </div>
+
+            <div class="resume-grid">
+                <div class="resume-section">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        Education
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-year">2020 - 2021</span>
+                            <div class="timeline-title">Professional Graphic Design Certificate</div>
+                            <div class="timeline-place">BASIS Institute of Technology & Management Limited (BITM)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2021 - 2022</span>
+                            <div class="timeline-title">Full Stack Web Development Certificate</div>
+                            <div class="timeline-place">BASIS Institute of Technology & Management Limited (BITM)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2025 - 2026</span>
+                            <div class="timeline-title">Professional Python Developer Training Certificate</div>
+                            <div class="timeline-place">BASIS Institute of Technology & Management Limited (BITM)</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2020 - present</span>
+                            <div class="timeline-title">BBA(Finance and Banking)</div>
+                            <div class="timeline-place">Govt.BM Collage Under National University</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="resume-section">
+                    <h3>
+                        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.728 0-7.212-.766-10.39-2.217M3 12.75V18l9 4.5L21 18v-5.25M12 12.75v9m0-9L3 9m9 3.75l9-3.75"></path></svg>
+                        Experience
+                    </h3>
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <span class="timeline-year">2023 - Present</span>
+                            <div class="timeline-title">Junior Full Stack Web Developer/Incharge</div>
+                            <div class="timeline-place">ENTER BANGLADESH LTD.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2021 - 2023</span>
+                            <div class="timeline-title">Junior Web Developer</div>
+                            <div class="timeline-place">ENTER BANGLADESH LTD.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2025 - Present</span>
+                            <div class="timeline-title">Audit Assistance</div>
+                            <div class="timeline-place">Aftab Ahmed & Co.</div>
+                        </div>
+                        <div class="timeline-item">
+                            <span class="timeline-year">2020 - 2021</span>
+                            <div class="timeline-title">Graphic Designer & Web Developer</div>
+                            <div class="timeline-place">Metaformic LTD.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="alt">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-label">Get In Touch</span>
+                <h2 class="section-title">Let's Work Together</h2>
+            </div>
+
+            <div class="contact-content">
+                <div class="contact-info">
+                    <p>Have a project in mind? Whether it's a web application, mobile app, or stunning graphic design, I'm here to bring your vision to life. Let's create something amazing together!</p>
+
+                    <p>
+                        <strong>Address</strong>
+                        Dhaka, Bangladesh
+                    </p>
+                    <p>
+                        <strong>Phone</strong>
+                        +880 1869-256761
+                    </p>
+                    <p>
+                        <strong>Email</strong>
+                        islamrifat925@gmail.com
+                    </p>
+                </div>
+
+                <form class="contact-form" id="contactForm">
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="your@email.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Message</label>
+                        <textarea name="message" class="form-textarea" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="form-button">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 RIFAT MOLLAH. All rights reserved. Made with ❤️ in Bangladesh</p>
+        </div>
+    </footer>
+
+</main>
+
+<!-- Link to external JavaScript file -->
+<script src="assets/js/script.js"></script>
+
+</body>
+</html>
