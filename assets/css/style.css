@@ -315,6 +315,7 @@ section {
     position: relative;
     background: rgba(255,255,255,0.5);
     backdrop-filter: blur(5px);
+    overflow: hidden;
 }
 
 section.alt {
@@ -1042,6 +1043,11 @@ footer p {
     .testimonial-card {
         flex: 0 0 calc(100% - 32px);
     }
+
+    /* Custom cursor is desktop-only; never reserve space/behaviour for it here */
+    .cursor-follower {
+        display: none;
+    }
 }
 
 @media (max-width: 768px) {
@@ -1090,14 +1096,53 @@ footer p {
         padding: 32px;
     }
 
+    .hero-image {
+        /* Keep the hero image inside its own box on mobile so it can
+           never visually drift down into the Portfolio section below. */
+        transform: none !important;
+    }
+
     .hero-image img {
         width: 250px;
         height: 250px;
+        /* Parallax transform is JS-disabled on mobile (see script.js),
+           this is just a safety net in case it ever fires. */
+        transform: none !important;
     }
 
     .hero-image::before {
         width: 250px;
         height: 250px;
+    }
+
+    /* Heavy backdrop-filter blur is the main cause of the sluggish/
+       "needs a reload" feeling on phones (mobile GPUs struggle with
+       compositing lots of blurred, translucent layers while other
+       animations run). We keep the look via solid-ish backgrounds
+       instead of blurring on small screens. */
+    section,
+    section.alt,
+    .sidebar,
+    .mobile-header,
+    .mobile-menu,
+    .contact-item,
+    .stat,
+    .filter-btn,
+    .service-item,
+    .testimonial-card,
+    .timeline-item,
+    .contact-form,
+    .form-input,
+    .form-textarea {
+        backdrop-filter: none;
+    }
+
+    section {
+        background: #ffffff;
+    }
+
+    section.alt {
+        background: #f9fafb;
     }
 }
 
@@ -1129,5 +1174,15 @@ footer p {
 
     .contact-form {
         padding: 24px;
+    }
+}
+
+/* Respect users who've asked their OS/browser for less motion:
+   turns off the orbs, particle canvas trail and cursor animation
+   entirely, which also helps low-power devices. */
+@media (prefers-reduced-motion: reduce) {
+    .gradient-orb,
+    .cursor-follower {
+        animation: none !important;
     }
 }
