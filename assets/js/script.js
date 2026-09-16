@@ -87,6 +87,10 @@ window.addEventListener('resize', () => {
 
 // ============================================
 // SMOOTH & CREATIVE MOUSE FOLLOWER
+// (Desktop-with-a-mouse only. On touch devices, or once the layout
+// drops to the mobile sidebar breakpoint, the follower is fully
+// disabled instead of just hidden with CSS, so it never has to be
+// "unstuck" with a reload after resizing/rotating the device.)
 // ============================================
 const cursorFollower = document.getElementById('cursorFollower');
 let mouseX = 0;
@@ -95,7 +99,6 @@ let followerX = 0;
 let followerY = 0;
 let ringX = 0;
 let ringY = 0;
-let isHovering = false;
 
 // Create outer ring for cursor
 const cursorRing = document.createElement('div');
@@ -108,6 +111,8 @@ cursorRing.style.pointerEvents = 'none';
 cursorRing.style.zIndex = '9998';
 cursorRing.style.willChange = 'transform';
 cursorRing.style.mixBlendMode = 'difference';
+cursorRing.style.left = '0';
+cursorRing.style.top = '0';
 document.body.appendChild(cursorRing);
 
 // Create trail effect
@@ -124,50 +129,48 @@ for (let i = 0; i < trailLength; i++) {
     dot.style.pointerEvents = 'none';
     dot.style.zIndex = '9997';
     dot.style.willChange = 'transform';
+    dot.style.left = '0';
+    dot.style.top = '0';
     document.body.appendChild(dot);
     trailDots.push({ element: dot, x: 0, y: 0 });
 }
 
-document.addEventListener('mousemove', (e) => {
-    mouseX = e.clientX;
-    mouseY = e.clientY;
-});
-
-// Detect hoverable elements
 const hoverElements = document.querySelectorAll('button, a, .portfolio-item, .filter-btn, .service-item, .testimonial-card, .stat');
 
-hoverElements.forEach(element => {
-    element.addEventListener('mouseenter', () => {
-        isHovering = true;
-        cursorFollower.style.width = '36px';
-        cursorFollower.style.height = '36px';
-        cursorFollower.style.opacity = '0.7';
-        cursorRing.style.width = '60px';
-        cursorRing.style.height = '60px';
-        cursorRing.style.borderColor = 'rgba(118, 75, 162, 0.8)';
-    });
+function onMouseMove(e) {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+}
 
-    element.addEventListener('mouseleave', () => {
-        isHovering = false;
-        cursorFollower.style.width = '24px';
-        cursorFollower.style.height = '24px';
-        cursorFollower.style.opacity = '0.5';
-        cursorRing.style.width = '40px';
-        cursorRing.style.height = '40px';
-        cursorRing.style.borderColor = 'rgba(102, 126, 234, 0.6)';
-    });
-});
+function onHoverEnter() {
+    cursorFollower.style.width = '36px';
+    cursorFollower.style.height = '36px';
+    cursorFollower.style.opacity = '0.7';
+    cursorRing.style.width = '60px';
+    cursorRing.style.height = '60px';
+    cursorRing.style.borderColor = 'rgba(118, 75, 162, 0.8)';
+}
 
-// Click effect
-document.addEventListener('mousedown', () => {
+function onHoverLeave() {
+    cursorFollower.style.width = '24px';
+    cursorFollower.style.height = '24px';
+    cursorFollower.style.opacity = '0.5';
+    cursorRing.style.width = '40px';
+    cursorRing.style.height = '40px';
+    cursorRing.style.borderColor = 'rgba(102, 126, 234, 0.6)';
+}
+
+function onMouseDown() {
     cursorFollower.style.transform = 'scale(0.7)';
     cursorRing.style.transform = 'translate(-50%, -50%) scale(0.7)';
-});
+}
 
-document.addEventListener('mouseup', () => {
+function onMouseUp() {
     cursorFollower.style.transform = 'scale(1)';
     cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
-});
+}
+
+let cursorFrameId = null;
 
 function animateFollower() {
     // Faster, smoother following
@@ -194,17 +197,85 @@ function animateFollower() {
         dot.element.style.transform = `translate(${dot.x}px, ${dot.y}px) translate(-50%, -50%)`;
     });
 
-    requestAnimationFrame(animateFollower);
+    cursorFrameId = requestAnimationFrame(animateFollower);
 }
 
-animateFollower();
+// Only real "fine pointer" desktops (a mouse, not a finger) get the
+// custom cursor, and only above the sidebar breakpoint. This is
+// re-checked on every resize/orientation change instead of once on
+// load, which is what used to leave the follower half-alive and
+// laggy until a manual reload.
+const desktopCursorQuery = window.matchMedia('(min-width: 1025px) and (pointer: fine)');
+let customCursorActive = false;
 
-// Hide default cursor on desktop
-if (window.innerWidth > 768) {
+function enableCustomCursor() {
+    if (customCursorActive) return;
+    customCursorActive = true;
+
     document.body.style.cursor = 'none';
     document.querySelectorAll('a, button, input, textarea, .portfolio-item, .filter-btn').forEach(el => {
         el.style.cursor = 'none';
     });
+
+    cursorFollower.style.display = '';
+    cursorRing.style.display = '';
+    trailDots.forEach(dot => { dot.element.style.display = ''; });
+
+    document.addEventListener('mousemove', onMouseMove, { passive: true });
+    hoverElements.forEach(element => {
+        element.addEventListener('mouseenter', onHoverEnter);
+        element.addEventListener('mouseleave', onHoverLeave);
+    });
+    document.addEventListener('mousedown', onMouseDown);
+    document.addEventListener('mouseup', onMouseUp);
+
+    if (cursorFrameId === null) {
+        animateFollower();
+    }
+}
+
+function disableCustomCursor() {
+    if (!customCursorActive) return;
+    customCursorActive = false;
+
+    document.body.style.cursor = '';
+    document.querySelectorAll('a, button, input, textarea, .portfolio-item, .filter-btn').forEach(el => {
+        el.style.cursor = '';
+    });
+
+    cursorFollower.style.display = 'none';
+    cursorRing.style.display = 'none';
+    trailDots.forEach(dot => { dot.element.style.display = 'none'; });
+
+    document.removeEventListener('mousemove', onMouseMove);
+    hoverElements.forEach(element => {
+        element.removeEventListener('mouseenter', onHoverEnter);
+        element.removeEventListener('mouseleave', onHoverLeave);
+    });
+    document.removeEventListener('mousedown', onMouseDown);
+    document.removeEventListener('mouseup', onMouseUp);
+
+    if (cursorFrameId !== null) {
+        cancelAnimationFrame(cursorFrameId);
+        cursorFrameId = null;
+    }
+}
+
+function syncCustomCursor() {
+    if (desktopCursorQuery.matches) {
+        enableCustomCursor();
+    } else {
+        disableCustomCursor();
+    }
+}
+
+syncCustomCursor();
+// Modern browsers fire 'change' on the MediaQueryList itself, which is
+// cheaper and more reliable than listening to every 'resize' event.
+if (desktopCursorQuery.addEventListener) {
+    desktopCursorQuery.addEventListener('change', syncCustomCursor);
+} else {
+    desktopCursorQuery.addListener(syncCustomCursor); // Safari < 14 fallback
 }
 
 // ============================================
@@ -367,29 +438,45 @@ document.querySelectorAll('.service-item, .portfolio-item, .testimonial-card').f
 
 // ============================================
 // SUBTLE PARALLAX EFFECT FOR HERO IMAGE
+// (Desktop only. This is what was pushing the profile photo down
+// into the Portfolio section on phones: the translateY offset kept
+// growing with scroll position but the hero section's own height
+// doesn't change, so on short mobile viewports the image visually
+// drifted into whatever section came after it. Below the tablet
+// breakpoint we simply never touch the image's transform.)
 // ============================================
-let lastScrollY = 0;
 let ticking = false;
+const parallaxQuery = window.matchMedia('(min-width: 1025px)');
 
 function updateParallax() {
     const scrolled = window.pageYOffset;
     const heroImage = document.querySelector('.hero-image img');
 
-    if (heroImage && scrolled < window.innerHeight) {
-        heroImage.style.transform = `translateY(${scrolled * 0.2}px)`;
+    if (heroImage) {
+        if (parallaxQuery.matches && scrolled < window.innerHeight) {
+            heroImage.style.transform = `translateY(${scrolled * 0.2}px)`;
+        } else {
+            heroImage.style.transform = '';
+        }
     }
 
     ticking = false;
 }
 
 window.addEventListener('scroll', () => {
-    lastScrollY = window.pageYOffset;
-
     if (!ticking) {
         window.requestAnimationFrame(updateParallax);
         ticking = true;
     }
-});
+}, { passive: true });
+
+// Reset immediately if the viewport crosses the breakpoint (resize,
+// device rotation) instead of waiting for the next scroll event.
+if (parallaxQuery.addEventListener) {
+    parallaxQuery.addEventListener('change', updateParallax);
+} else {
+    parallaxQuery.addListener(updateParallax);
+}
 
 // ============================================
 // SMOOTH PAGE LOADING ANIMATION
